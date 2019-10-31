@@ -3,7 +3,7 @@ logging.basicConfig(level=logging.DEBUG)
 import pygame
 import time
 import random
-logging.info("initiating pygame")    
+logging.info("initiating pygame")
 pygame.init()
 logging.info("setting the width and height of display")
 display_width = 1000
@@ -34,7 +34,7 @@ def things_dodged(count):
 	gameDisplay.blit(text,(0,0))
 
 def car(x,y):
-	
+
 	gameDisplay.blit(carImg,(x,y))
 
 def text_objects(text, font):
@@ -64,7 +64,7 @@ def game_loop():
 	y = (display_height * 0.8)
 	x_change = 0
 	y_change = 0
-	
+
 	thing_startx = random.randrange(0, display_width)
 	thing_starty = -600 # so that it apears a little slower
 	thing_speed = 10
@@ -72,7 +72,7 @@ def game_loop():
 	thing_height = 100 #pixels
 	dodged = 0
 
-	
+
 	gameExit = False
 	logging.info("while not gameExit")
 	while not gameExit:
@@ -136,8 +136,8 @@ def game_loop():
 			thing_speed += 0.5
 			thing_width += (dodged * 1.2)
 
-		if y < thing_starty + thing_height:
-			
+		if thing_starty + thing_height > y > thing_starty:
+
 			if x>thing_startx and x<thing_startx+thing_width or x+car_width>thing_startx and x+car_width<thing_startx+thing_width:
 				crash()
 		pygame.display.update()
